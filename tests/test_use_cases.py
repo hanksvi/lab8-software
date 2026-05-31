@@ -13,7 +13,7 @@ class ProcessDinnerTransactionTest(unittest.TestCase):
         use_case = ProcessDinnerTransaction(RewardPolicy(), repository)
         transaction = DinnerTransaction.create(
             amount=Decimal("40.00"),
-            card_number="4556737586899855",
+            card_number="TEST-CARD-0001",
             restaurant_code="REST-03",
             occurred_at=datetime(2026, 5, 16, tzinfo=timezone.utc),
         )

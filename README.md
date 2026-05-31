@@ -50,7 +50,7 @@ flowchart LR
 ```json
 {
   "amount": "120.50",
-  "card_number": "4556737586899855",
+  "card_number": "TEST-CARD-0001",
   "restaurant_code": "REST-UTEC-01",
   "occurred_at": "2026-05-16T20:30:00+00:00"
 }
@@ -72,6 +72,8 @@ Variables principales:
 python -m pip install -r requirements.txt
 ```
 
+Si `confluent-kafka` falla en Python 3.14, usar Python 3.12 o instalar Microsoft C++ Build Tools. Para ejecutar solo pruebas y SonarQube basta con tener instalados `coverage` y `pysonar`.
+
 ## Pruebas y Cobertura
 
 ```powershell
@@ -89,6 +91,7 @@ En una terminal:
 
 ```powershell
 $env:PYTHONPATH="src"
+$env:RABBIT_HOST="213.199.42.57"
 $env:RABBIT_PASSWORD="<password_del_curso>"
 python -m rewards.services.main rabbit-consumer
 ```
@@ -97,6 +100,7 @@ En otra terminal:
 
 ```powershell
 $env:PYTHONPATH="src"
+$env:RABBIT_HOST="213.199.42.57"
 $env:RABBIT_PASSWORD="<password_del_curso>"
 python -m rewards.services.main rabbit-producer
 ```
@@ -107,6 +111,7 @@ En una terminal:
 
 ```powershell
 $env:PYTHONPATH="src"
+$env:KAFKA_BOOTSTRAP_SERVERS="213.199.42.57:9092"
 python -m rewards.services.main kafka-consumer
 ```
 
@@ -114,6 +119,7 @@ En otra terminal:
 
 ```powershell
 $env:PYTHONPATH="src"
+$env:KAFKA_BOOTSTRAP_SERVERS="213.199.42.57:9092"
 python -m rewards.services.main kafka-producer
 ```
 
@@ -133,4 +139,11 @@ $env:SONAR_TOKEN="<token_del_curso>"
 python -m coverage run -m unittest discover -s tests
 python -m coverage xml
 sonar-scanner
+```
+
+Si se usa `pysonar` en lugar de `sonar-scanner`:
+
+```powershell
+$scripts = python -c "import sysconfig; print(sysconfig.get_path('scripts'))"
+& "$scripts\pysonar.exe" --sonar-host-url=https://sonarqube.ingsoftware.lat/ --sonar-token=$env:SONAR_TOKEN --sonar-project-key=Hanks_Vargas_T1
 ```

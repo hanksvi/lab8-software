@@ -9,7 +9,7 @@ class RewardPolicyTest(unittest.TestCase):
     def test_calculates_points_and_cashback(self):
         transaction = DinnerTransaction.create(
             amount=Decimal("100.00"),
-            card_number="4556737586899855",
+            card_number="TEST-CARD-0001",
             restaurant_code="rest-01",
             occurred_at=datetime(2026, 5, 16, tzinfo=timezone.utc),
         )
@@ -24,7 +24,7 @@ class RewardPolicyTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             DinnerTransaction.create(
                 amount=Decimal("0"),
-                card_number="4556737586899855",
+                card_number="TEST-CARD-0001",
                 restaurant_code="REST-01",
             )
 

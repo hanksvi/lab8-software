@@ -10,7 +10,7 @@ class EventCodecTest(unittest.TestCase):
     def test_transaction_roundtrip(self):
         transaction = DinnerTransaction.create(
             amount=Decimal("80.75"),
-            card_number="4556737586899855",
+            card_number="TEST-CARD-0001",
             restaurant_code="REST-02",
             occurred_at=datetime(2026, 5, 16, 20, 30, tzinfo=timezone.utc),
         )
@@ -21,7 +21,7 @@ class EventCodecTest(unittest.TestCase):
 
     def test_reward_event_contains_result(self):
         reward = Reward(
-            card_number="4556737586899855",
+            card_number="TEST-CARD-0001",
             points=120,
             cashback=Decimal("4.00"),
             restaurant_code="REST-02",
