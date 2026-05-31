@@ -1,0 +1,9 @@
+[run]
+source = src
+omit =
+    src/rewards/infrastructure/messaging/*
+    src/rewards/common/config.py
+    src/rewards/services/*
+
+[report]
+show_missing = True

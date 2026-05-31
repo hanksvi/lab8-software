@@ -1,0 +1,8 @@
+.coverage
+.env
+coverage.xml
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+Laboratorio 8-1.pdf

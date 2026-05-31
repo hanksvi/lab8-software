@@ -1,0 +1,4 @@
+pika==1.3.2
+confluent-kafka==2.10.0
+coverage==7.8.2
+

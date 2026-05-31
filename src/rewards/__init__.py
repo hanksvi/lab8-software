@@ -1,0 +1,2 @@
+"""Rewards event processing package."""
+
